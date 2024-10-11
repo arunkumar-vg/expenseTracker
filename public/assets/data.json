@@ -1,0 +1,60 @@
+[
+  {
+    "year": 2024,
+    "months": [
+      {
+        "month": "January",
+        "id": 0,
+        "expenses": [
+          {
+            "id": 1,
+            "date": "2023-01-10",
+            "expenseAmount": 100,
+            "paidFor": "Groceries"
+          },
+          {
+            "id": 2,
+            "date": "2023-01-15",
+            "expenseAmount": 50,
+            "paidFor": "Transport"
+          },
+          {
+            "id": 3,
+            "date": "2023-02-05",
+            "expenseAmount": 200,
+            "paidFor": "Rent"
+          }
+        ]
+      },
+      {
+        "month": "February",
+        "id": 1,
+        "expenses": [
+          {
+            "id": 1,
+            "date": "2023-02-05",
+            "expenseAmount": 200,
+            "paidFor": "Rent"
+          }
+        ]
+      },
+      {
+        "month": "March",
+        "id": 2,
+        "expenses": []
+      },
+      {
+        "month": "October",
+        "id": 9,
+        "expenses": [
+          {
+            "id": 1,
+            "date": "2023-02-05",
+            "expenseAmount": 200,
+            "paidFor": "Rent"
+          }
+        ]
+      }
+    ]
+  }
+]
