@@ -1,6 +1,6 @@
 <template>
   <span>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="../public/assets/logo.png">
   </span>
   <div id="app">
     <router-view></router-view>
@@ -34,5 +34,6 @@ span {
 img {
   width: 40px;
   height: 40px;
+  font-size: 14px;
 }
 </style>
