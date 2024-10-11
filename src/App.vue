@@ -34,5 +34,6 @@ span {
 img {
   width: 40px;
   height: 40px;
+  font-size: 14px;
 }
 </style>
