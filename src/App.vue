@@ -1,23 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <span>
+    <img alt="Vue logo" src="./assets/logo.png">
+  </span>
   <div id="app">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import './styles.scss';
 export default {
   name: 'App'
 }
 </script>
 
-<style>
+<style scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: #2c3e50;
-  margin-top: 60px;
+  font-size: 14px;
+}
+
+span {
+  width: calc(100vw - 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgb(0 0 0 / 10%);
+}
+img {
+  width: 40px;
+  height: 40px;
 }
 </style>
