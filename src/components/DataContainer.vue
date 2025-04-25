@@ -4,8 +4,10 @@ import { defineProps, ref, watchEffect } from 'vue';
 import { PlusIcon, PencilIcon, TrashIcon } from '@heroicons/vue/solid';
 import axios from 'axios';
 
+import ModalBox from '@/common/ModalBox.vue';
 import NoData from '../images/no-data.png';
 
+let modalBox = ref(false);
 const filteredData = ref([]);
 const props = defineProps({
   activeYear: {
@@ -18,13 +20,16 @@ const props = defineProps({
   }
 });
 
+const openModalBox = () => {
+  modalBox.value = true;
+};
+
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
 
 const fetchData = () => {
   axios.get(`http://localhost:8246/api/getData/${props.activeYear}/${props.activeMonth}`)
     .then(response => {
-      console.log('hello', response.data)
       filteredData.value = response.data;
     })
     .catch(error => {
@@ -41,7 +46,7 @@ const addData = () => {
   axios.post('http://localhost:8246/api/saveData', newObject)
     .then(response => {
       console.log(response.data.message);
-      this.fetchData();
+      fetchData();
     })
     .catch(error => {
       console.error('Error adding data:', error);
@@ -56,7 +61,7 @@ const updateData = (id) => {
   axios.put(`http://localhost:8246/api/updateData/${props.activeYear}/${props.activeMonth}/${id}`, updatedObject)
     .then(response => {
       console.log(response.data.message);
-      this.fetchData();
+      fetchData();
     })
     .catch(error => {
       console.error('Error updating data:', error);
@@ -67,7 +72,7 @@ const deleteData = (id) => {
   axios.delete(`http://localhost:8246/api/data/${props.activeYear}/${props.activeMonth}/${id}`)
     .then(response => {
       console.log(response.data.message);
-      this.fetchData();
+      fetchData();
     })
     .catch(error => {
       console.error('Error deleting data:', error);
@@ -80,11 +85,21 @@ watchEffect(() => {
 </script>
 
 <template>
+  <div v-if="modalBox">
+    <ModalBox
+      :heading="'TEST HEADING'"
+      :buttonName="'Save'"
+      @closeModal="!modalBox"
+      @onSave="openModalBox"
+    >
+      <p>This is the content inside the modal!</p>
+    </ModalBox>
+  </div>
   <div class="p-2">
     <div class="text-medium font-gray">Expense Report</div>
     <div class="d-flex align-items-center mt-2">
       <div class="text-medium text-semibold">{{ activeYear }}</div>
-      <div class="item-center ml-auto btn-common w-7">
+      <div class="item-center ml-auto btn-common w-7" @click="openModalBox()">
         <PlusIcon style="width: 16px; height: 16px; margin-right: 2px;" />
         Add Expense
       </div>
